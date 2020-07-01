@@ -8,15 +8,19 @@
     <script>
         // on collection
         var socket = io("localhost:3000");
+        socket.on("Server-send-data",function(data){
+            $("#noidung").append(data+", ");
+        });
+        $(document).ready(function(){
+            $("#mrA").click(function() {
+                socket.emit("Client-send-data","Hello");
+            });
+        });
     </script>
     <title>Demo Socket IO</title>
 </head>
 <body>
-    Hello world
-    <!-- <script>
-        $(document).ready(function(){
-            alert("hello jquery");
-        })
-    </script> -->
+    <div id="mrA">Click Send</div>
+    <h2 id="noidung"></h2>
 </body>
 </html>
